@@ -12,130 +12,132 @@ f == 0
 multiply the credits by the grade for the class total
 */
 
+void intitialize();
 
-std::vector<Student> students = { Student(1,"George P. Burdell"),
-						Student(2,"Nancy Rhodes") };
 
-std::vector<Course> courses = { Course(1,"Algebra",5),
-						  Course(2,"Physics",4),
-						  Course(3,"English",3),
-						  Course(4,"Economics",4) };
 
-std::vector<Grade> grades = { Grade(1,1,'B'),	Grade(1,2,'A'),	Grade(1,3,'C'),
-						Grade(2,1,'A'),	Grade(2,2,'A'), Grade(2,4,'B') };
 
-float GPA = 0.0f;
+StudentRecords SR;
 int id;
 
 int main() {
-
-	std::cout << "Enter a student ID(1 For George, 2 for Nancy): ";
+	intitialize();
+	std::cout << "Enter a student ID: ";
 	std::cin >> id;
+
+	SR.report_card(id);
+
 	
 
-	// Calculate the GPA for the selected student.
-	// Write your code here
-	if (id == 1) {
-		int total_class_value{ 0 };
-		int total_student_points{ 0 };
-		for (auto x : grades) {
+	
 
-			if (x.get_student_id() == 1) {
+	//std::cout << "Enter a student ID(1 For George, 2 for Nancy): ";
+	//std::cin >> id;
+	//
 
-				int student_grade{ 0 };
-				int course_id{ 0 };
-				course_id = x.get_course_id();
-				for (auto z : courses) {
+	//// Calculate the GPA for the selected student.
+	//// Write your code here
+	//if (id == 1) {
+	//	int total_class_value{ 0 };
+	//	int total_student_points{ 0 };
+	//	for (auto x : grades) {
 
-					if (z.get_id() == course_id) {
-						total_class_value += z.get_credits();
-						int class_value = z.get_credits;
-						switch (x.get_grade())
-						{
-						case 'A':
-							student_grade = 4 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'B' :
-							student_grade = 3 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'C':
-							student_grade = 2 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'D':
-							student_grade = 1 * class_value;
-							total_student_points += student_grade;
-							break;
-						default:
-							student_grade = 0 * class_value;
-							total_student_points += student_grade;
-							break;
-							break;
-						}
-					}
-				}
+	//		if (x.get_student_id() == 1) {
 
-			}
-		}
+	//			int student_grade{ 0 };
+	//			int course_id{ 0 };
+	//			course_id = x.get_course_id();
+	//			for (auto z : courses) {
 
-		GPA = (total_student_points / total_class_value);
-	}
-	else if (id == 2) {
-		int total_class_value{ 0 };
-		int total_student_points{ 0 };
-		for (auto x : grades) {
+	//				if (z.get_id() == course_id) {
+	//					total_class_value += z.get_credits();
+	//					int class_value = z.get_credits;
+	//					switch (x.get_grade())
+	//					{
+	//					case 'A':
+	//						student_grade = 4 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'B' :
+	//						student_grade = 3 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'C':
+	//						student_grade = 2 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'D':
+	//						student_grade = 1 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					default:
+	//						student_grade = 0 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//						break;
+	//					}
+	//				}
+	//			}
 
-			if (x.get_student_id() == 2) {
+	//		}
+	//	}
 
-				int student_grade{ 0 };
-				int course_id{ 0 };
-				course_id = x.get_course_id();
-				for (auto z : courses) {
+	//	GPA = (total_student_points / total_class_value);
+	//}
+	//else if (id == 2) {
+	//	int total_class_value{ 0 };
+	//	int total_student_points{ 0 };
+	//	for (auto x : grades) {
 
-					if (z.get_id() == course_id) {
-						total_class_value += z.get_credits();
-						int class_value = z.get_credits();
-						switch (x.get_grade())
-						{
-						case 'A':
-							student_grade = 4 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'B':
-							student_grade = 3 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'C':
-							student_grade = 2 * class_value;
-							total_student_points += student_grade;
-							break;
-						case 'D':
-							student_grade = 1 * class_value;
-							total_student_points += student_grade;
-							break;
-						default:
-							student_grade = 0 * class_value;
-							total_student_points += student_grade;
-							break;
-							break;
-						}
-					}
-				}
+	//		if (x.get_student_id() == 2) {
 
-			}
-		}
+	//			int student_grade{ 0 };
+	//			int course_id{ 0 };
+	//			course_id = x.get_course_id();
+	//			for (auto z : courses) {
 
-		GPA = (total_student_points / total_class_value);
+	//				if (z.get_id() == course_id) {
+	//					total_class_value += z.get_credits();
+	//					int class_value = z.get_credits();
+	//					switch (x.get_grade())
+	//					{
+	//					case 'A':
+	//						student_grade = 4 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'B':
+	//						student_grade = 3 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'C':
+	//						student_grade = 2 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					case 'D':
+	//						student_grade = 1 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//					default:
+	//						student_grade = 0 * class_value;
+	//						total_student_points += student_grade;
+	//						break;
+	//						break;
+	//					}
+	//				}
+	//			}
 
-	}
+	//		}
+	//	}
 
-	std::string student_str;
-	int id_offset{ 1 };
-	student_str = students[id-id_offset].get_name(); // Change this to the selected student's name
+	//	GPA = (total_student_points / total_class_value);
 
-	std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+	//}
+
+	//std::string student_str;
+	//int id_offset{ 1 };
+	//student_str = students[id-id_offset].get_name(); // Change this to the selected student's name
+
+	//std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
 
 
 
@@ -172,4 +174,21 @@ int main() {
 
 
 	return(EXIT_SUCCESS);
+}
+
+void intitialize() {
+	SR.add_student(1, "George P. Burdell");
+	SR.add_student(2,"Nancy Rhodes");
+
+	SR.add_course(1, "Algebra", 5);
+	SR.add_course(2, "Physics", 4);
+	SR.add_course(3, "English", 3);
+	SR.add_course(4,"Economics",4);
+
+	SR.add_grade(1, 1, 'B');
+	SR.add_grade(1, 2, 'A'); 
+	SR.add_grade(1, 3, 'C');
+	SR.add_grade(2, 1, 'A');
+	SR.add_grade(2, 2, 'A');
+	SR.add_grade(2, 4, 'B');
 }

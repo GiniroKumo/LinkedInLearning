@@ -3,39 +3,38 @@
 #include <string>
 
 class Student {
-	int student_ID;
-	std::string student_name;
-public:
-	int get_student_ID();
-	std::string get_student_name();
+private:
+	int id;
+	std::string name;
 
-	void set_student_ID(const int& new_student_ID);
-	void set_student_name(const std::string& new_student_name);
+public:
+	Student(int the_id, std::string the_name);
+	int get_id();
+	std::string get_name();
 };
 
-class Course_Class {
-	int course_ID;
-	std::string class_name;
-	unsigned int credits;
-public:
-	int get_course_ID();
-	std::string get_class_name();
+class Course {
+private:
+	int id;
+	std::string name;
+	unsigned char credits;
 
-	void set_course_ID(const int& new_course_ID);
-	void set_course_name(const std::string& new_course_name);
+public:
+	Course(int the_id, std::string the_name, unsigned char the_credits);
+	int get_id();
+	std::string get_name();
+	int get_credits();
 };
 
 class Grade {
-	int student_ID;
-	int course_ID;
+private:
+	int student_id;
+	int course_id;
 	char grade;
+
 public:
-	int get_student_ID();
-	int get_course_ID();
+	Grade(int sid, int cid, char grd);
+	int get_student_id();
+	int get_course_id();
 	char get_grade();
-
-	void set_student_ID(const int& new_student_ID);
-	void set_course_ID(const int& new_course_ID);
-	void set_grade(const char& new_grade);
 };
-

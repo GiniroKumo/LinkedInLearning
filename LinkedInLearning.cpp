@@ -1,9 +1,145 @@
 #include <iostream>
+#include <vector>
 #include "records.h"
+
+/*
+a == 4
+b == 3
+c == 2
+d == 1
+f == 0
+
+multiply the credits by the grade for the class total
+*/
+
+
+std::vector<Student> students = { Student(1,"George P. Burdell"),
+						Student(2,"Nancy Rhodes") };
+
+std::vector<Course> courses = { Course(1,"Algebra",5),
+						  Course(2,"Physics",4),
+						  Course(3,"English",3),
+						  Course(4,"Economics",4) };
+
+std::vector<Grade> grades = { Grade(1,1,'B'),	Grade(1,2,'A'),	Grade(1,3,'C'),
+						Grade(2,1,'A'),	Grade(2,2,'A'), Grade(2,4,'B') };
+
+float GPA = 0.0f;
+int id;
 
 int main() {
 
-	Student *new_student;
+	std::cout << "Enter a student ID(1 For George, 2 for Nancy): ";
+	std::cin >> id;
+	
+
+	// Calculate the GPA for the selected student.
+	// Write your code here
+	if (id == 1) {
+		int total_class_value{ 0 };
+		int total_student_points{ 0 };
+		for (auto x : grades) {
+
+			if (x.get_student_id() == 1) {
+
+				int student_grade{ 0 };
+				int course_id{ 0 };
+				course_id = x.get_course_id();
+				for (auto z : courses) {
+
+					if (z.get_id() == course_id) {
+						total_class_value += z.get_credits();
+						int class_value = z.get_credits;
+						switch (x.get_grade())
+						{
+						case 'A':
+							student_grade = 4 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'B' :
+							student_grade = 3 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'C':
+							student_grade = 2 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'D':
+							student_grade = 1 * class_value;
+							total_student_points += student_grade;
+							break;
+						default:
+							student_grade = 0 * class_value;
+							total_student_points += student_grade;
+							break;
+							break;
+						}
+					}
+				}
+
+			}
+		}
+
+		GPA = (total_student_points / total_class_value);
+	}
+	else if (id == 2) {
+		int total_class_value{ 0 };
+		int total_student_points{ 0 };
+		for (auto x : grades) {
+
+			if (x.get_student_id() == 2) {
+
+				int student_grade{ 0 };
+				int course_id{ 0 };
+				course_id = x.get_course_id();
+				for (auto z : courses) {
+
+					if (z.get_id() == course_id) {
+						total_class_value += z.get_credits();
+						int class_value = z.get_credits();
+						switch (x.get_grade())
+						{
+						case 'A':
+							student_grade = 4 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'B':
+							student_grade = 3 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'C':
+							student_grade = 2 * class_value;
+							total_student_points += student_grade;
+							break;
+						case 'D':
+							student_grade = 1 * class_value;
+							total_student_points += student_grade;
+							break;
+						default:
+							student_grade = 0 * class_value;
+							total_student_points += student_grade;
+							break;
+							break;
+						}
+					}
+				}
+
+			}
+		}
+
+		GPA = (total_student_points / total_class_value);
+
+	}
+
+	std::string student_str;
+	int id_offset{ 1 };
+	student_str = students[id-id_offset].get_name(); // Change this to the selected student's name
+
+	std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+
+
+
+	/*Student *new_student;
 
 	new_student = new Student;
 	new_student->set_student_name("Marc Sommerfield");
@@ -32,6 +168,7 @@ int main() {
 	std::cout << "Course Grade is " << new_grade->get_grade() << std::endl;
 
 	delete new_grade;
+	*/
 
 
 	return(EXIT_SUCCESS);

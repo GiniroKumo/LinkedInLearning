@@ -1,59 +1,46 @@
 #include "records.h"
 
-#include <iostream>
+using namespace std;
 
-int Student::get_student_ID() {
-	return(student_ID);
+Student::Student(int the_id, string the_name) {
+	id = the_id;
+	name = the_name;
+}
+int Student::get_id() {
+	return id;
+}
+string Student::get_name() {
+	return name;
 }
 
-std::string Student::get_student_name() {
-	return(student_name);
+Course::Course(int the_id, string the_name, unsigned char the_credits) {
+	id = the_id;
+	name = the_name;
+	credits = the_credits;
+}
+int Course::get_id() {
+	return id;
+}
+string Course::get_name() {
+	return name;
+}
+int Course::get_credits() {
+	return credits;
 }
 
-void Student::set_student_ID(const int& new_student_ID) {
-	student_ID = new_student_ID;
-}
 
-void Student::set_student_name(const std::string& new_student_name) {
-	student_name = new_student_name;
+Grade::Grade(int sid, int cid, char grd) {
+	student_id = sid;
+	course_id = cid;
+	grade = grd;
 }
-
-int Course_Class::get_course_ID() {
-	return(course_ID);
+int Grade::get_student_id() {
+	return student_id;
 }
-
-std::string Course_Class::get_class_name() {
-	return(class_name);
+int Grade::get_course_id() {
+	return course_id;
 }
-
-void Course_Class::set_course_ID(const int& new_course_ID) {
-	course_ID = new_course_ID;
-}
-
-void Course_Class::set_course_name(const std::string& new_course_name) {
-	class_name = new_course_name;
-}
-
-int Grade::get_student_ID() {
-	return(student_ID);
-}
-
-int Grade::get_course_ID() {
-	return(course_ID);
-}
-
 char Grade::get_grade() {
-	return(grade);
+	return grade;
 }
 
-void Grade::set_student_ID(const int& new_student_ID) {
-	student_ID = new_student_ID;
-}
-
-void Grade::set_course_ID(const int& new_course_ID) {
-	course_ID = new_course_ID;
-}
-
-void Grade::set_grade(const char& new_grade) {
-	grade = new_grade;
-}

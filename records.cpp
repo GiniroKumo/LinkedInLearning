@@ -1,6 +1,7 @@
 #include "records.h"
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -46,16 +47,97 @@ char Grade::get_grade() {
 	return grade;
 }
 
-void StudentRecords::add_student(int sid, string sname) {
-	students.push_back(Student(sid, sname));
+void StudentRecords::add_student() {
+	std::ifstream student_file;
+	std::string temp_container = "";
+	std::string student_name = "";
+	int student_id{ 0 };
+	student_file.open("students.txt");
+	if (student_file.fail()) {
+		std::cout << "nothing found!" << std::endl;
+	}
+	else {
+		while (!student_file.eof()) {
+			getline(student_file, temp_container);
+			if (temp_container.size() <= 1) {
+				student_id = stoi(temp_container);
+			}
+			else {
+				student_name = temp_container;
+			}
+			
+		}
+		students.push_back(Student(student_id, student_name));
+	}
+	
+	student_file.close();
 }
 
-void StudentRecords::add_course(int cid, string cname, unsigned char ccredits) {
-	courses.push_back(Course(cid, cname, ccredits));
+void StudentRecords::add_course() {
+	std::ifstream course_file;
+	std::string temp_container = "";
+	std::string course_name = "";
+	int course_id{ 0 };
+	int course_credits{ 0 };
+	course_file.open("courses.txt");
+	if (course_file.fail()) {
+		std::cout << "nothing found!" << std::endl;
+	}
+	else {
+		while (!course_file.eof()) {
+			getline(course_file, temp_container);
+			course_id = stoi(temp_container);
+			temp_container.clear();
+			temp_container = "";
+
+			getline(course_file, temp_container);
+			course_name = temp_container;
+			temp_container.clear();
+			temp_container = "";
+
+			getline(course_file, temp_container);
+			course_credits = stoi(temp_container);
+			temp_container.clear();
+			temp_container = "";
+
+			courses.push_back(Course(course_id, course_name, course_credits));
+		}
+	}
+
+	course_file.close();
 }
 
-void StudentRecords::add_grade(int sid, int cid, char grade) {
-	grades.push_back(Grade(sid, cid, grade));
+void StudentRecords::add_grade() {
+	std::ifstream student_grades;
+	int student_id{ 0 };
+	int course_id{ 0 };
+	char student_grade{ ' ' };
+	std::string temp_container = "";
+
+	student_grades.open("grades.txt");
+	if (student_grades.fail()) {
+		std::cout << "nothing found here!" << std::endl;
+	}
+	else {
+		getline(student_grades, temp_container);
+		student_id = stoi(temp_container);
+		temp_container.clear();
+		temp_container = "";
+
+		getline(student_grades, temp_container);
+		course_id = stoi(temp_container);
+		temp_container.clear();
+		temp_container = "";
+
+		getline(student_grades, temp_container);
+		student_grade << temp_container[0]; 
+		temp_container.clear();
+		temp_container = "";
+
+		grades.push_back(Grade(student_id, course_id, student_grade));
+	}
+	
+	student_grades.close();
 }
 
 float StudentRecords::get_num_grade(char letter) {
